@@ -45,7 +45,7 @@ body {
 
 .menu_page_header p {
   font-size: 1rem;
-  color: rgb(125, 125, 125);
+  color: #1E1E1E;
 }
 
 .menu {
@@ -170,11 +170,12 @@ h2.navigation_top_title {
 h2.navigation_top_title span {
   border: 2px solid rgb(255, 136, 125);
   text-transform: uppercase;
-  padding: 3px 5px;
+  padding: 2px 5px;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 11px;
   color: rgb(255, 136, 125);
   margin-left: 5px;
+  line-height: 16px;
 }
 
 .area_header h4, .ventas_menu h4 {
@@ -208,9 +209,11 @@ span.section_icon {
 }
 
 .area h3 .counter {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   margin-left: 5px;
+  font-family: "Roboto", serif;
+  letter-spacing: .25px;
 }
 
 /* pa {
@@ -282,7 +285,7 @@ ul.menu li:last-child {
 
 .menu-header p {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--blue-medium);
 }
 
@@ -296,6 +299,10 @@ ul.sub-menu li {
 
 .sub-menu .menu-header {
   position: relative;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  color: #667781;
 }
 
 .sub-menu .menu-header::before {

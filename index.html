@@ -48,7 +48,9 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Seguros empresas</p> <span class="badge">4</span>
-                <span class="percentage empresas">39%</span>
+                <span class="percentage empresas" data-width="39">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
               <ul class="sub-menu">
                 <li class="menu-item has-submenu">
@@ -92,7 +94,9 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Seguros personas</p> <span class="badge">1</span>
-                <span class="percentage personas">0%</span>
+                <span class="percentage personas" data-width="0">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
             </li>
             <!-- third navigation menu  -->
@@ -100,7 +104,10 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Seguros hogar</p> <span class="badge">1</span>
-                <span class="percentage hogar">0%</span>
+                <span class="percentage hogar"  data-width="0">
+                  
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
             </li>
           </ul>
@@ -118,7 +125,9 @@
                 </span>
                 <h3> ATC <span class="counter">6</span></h3>
               </div>
-              <div class="progress green">50%</div>
+              <div class="progress green"  data-width="50">
+                <p class="progress_text">0%</p>
+              </div>
             </div>
           </div>
         </div>
@@ -131,7 +140,9 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Siniestros</p> <span class="badge">4</span>
-                <span class="percentage Siniestros">23%</span>
+                <span class="percentage Siniestros"  data-width="23">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
               <ul class="sub-menu">
                 <li class="menu-item has-submenu">
@@ -175,7 +186,9 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Asistencias</p> <span class="badge">0</span>
-                <span class="percentage Asistencias">4%</span>
+                <span class="percentage Asistencias"  data-width="4">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
             </li>
             <!-- third navigation menu  -->
@@ -183,14 +196,18 @@
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
                 <p class="nav_card_title">Renovación de Póliza</p> <span class="badge">0</span>
-                <span class="percentage Renovación">0%</span>
+                <span class="percentage Renovación"  data-width="0">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
             </li>
             <!-- fourth navigation menu  -->
             <li class="menu-item">
               <div class="menu-header">
                 <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>  <p class="nav_card_title">Cobranzas</p> <span class="badge">0</span>
-                <span class="percentage Renovación">0%</span>
+                <span class="percentage Renovación"  data-width="0">
+                  <p class="progress_text">0%</p>
+                </span>
               </div>
             </li>
           </ul>
@@ -215,6 +232,28 @@
         });
       });
     });
+document.querySelector('.area_nav_progress_main').addEventListener('click', () => {
+  const progressBars = document.querySelectorAll('.percentage');
+
+  progressBars.forEach(bar => {
+    const targetWidth = parseInt(bar.getAttribute('data-width'), 10); // Final width percentage
+    const textElement = bar.querySelector('.progress_text'); // Text inside the bar
+    let currentWidth = 0; // Starting width
+    
+    // Animate the bar's width and the text simultaneously
+    const interval = setInterval(() => {
+      if (currentWidth >= targetWidth) {
+        clearInterval(interval); // Stop when target is reached
+      } else {
+        currentWidth++;
+        bar.style.width = `${currentWidth}%`; // Update the width
+        textElement.innerText = `${currentWidth}%`; // Update the percentage text
+      }
+    }, 2); // Adjust the speed of the animation by changing this value
+  });
+});
+
+
   </script>
 </body>
 

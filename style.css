@@ -103,44 +103,47 @@ body {
   border-radius: 5px;
   text-align: right;
   font-weight: 600;
+  width: 0%;
+  transition: width .6s ease;
+
 }
 
 .percentage.empresas {
   color: rgb(106, 90, 205);
   background-color: rgb(223, 155, 254);
-  width: 35%;
+  /* width: 0%; */
 }
 
 .percentage.personas {
   color: var(--blue-medium);
   background-color: var(--yellow);
-  width: 2%;
+  /* width: 2%; */
 }
 .percentage.hogar {
   color: rgba(73, 84, 96, 1);
   background-color:rgba(177, 254, 218, 1);
-  width: 2%;
+  /* width: 2%; */
 }
 .percentage.Renovación {
   color: rgba(73, 84, 96, 1);
   background-color:rgba(177, 254, 218, 1);
-  width: 2%;
+  /* width: 2%; */
 }
  .percentage.Siniestros {
   background: rgba(255, 149, 202, 1);
   color: var(--blue-medium);
-  width: 23%;
+  /* width: 23%; */
 }
  .percentage.Asistencias {
   background: rgba(253, 201, 145, 1);
   color: var(--blue-medium);
-  width: 4%;
+  /* width: 4%; */
 }
 
  .percentage.Renovación {
   background: rgba(151, 228, 255, 1);
   color: var(--blue-medium);
-  width: 2%;
+  /* width: 2%; */
 }
 .area_nav_progress_main {
   border: 1px solid rgb(238, 238, 238);

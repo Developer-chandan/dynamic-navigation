@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Collapsible Navigation with Submenus</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,199 +20,84 @@
       <p>Asegúrate de completar los siguientes pasos para tener tu chatbot al dia</p>
     </div>
     <h2 class="navigation_top_title">Click más presionados <span>beta</span></h2>
-    <!-- area navigation and progress -->
-    <div class="area_nav_progress_main">
-      <!-- VENTAS  navigation area block -->
-      <div class="area_wrap first">
-        <div class="left_part">
-          <div class="area_header">
-            <h4>Area</h4>
-          </div>
-          <div class="area_inner">
-            <div class="area">
-              <div class="area_content">
-                <span class="section_icon">
-                  <img src="Pie chart.svg" alt="">
-                </span>
-                <h3> VENTAS <span class="counter">6</span></h3>
-              </div>
-              <div class="progress yellow">50%</div>
-            </div>
-          </div>
-        </div>
-        <div class="ventas_menu right_part">
-          <h4>Estadística POR CONSULTAS </h4>
-
-          <ul class="menu">
-
-            <!-- First Main Navigation -->
-            <li class="menu-item has-submenu">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Seguros empresas</p> <span class="badge">4</span>
-                <span class="percentage empresas" data-width="39">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-              <ul class="sub-menu">
-                <li class="menu-item has-submenu">
-                  <div class="menu-header">
-                    Comercios <span class="badge">2</span>
-                  </div>
-                  <ul class="sub-menu">
-                    <li>
-                      <div class="menu-header">Seguros de vida <span class="badge">2</span></div>
-                      <ul class="sub-menu">
-                        <li>
-                          <div class="menu-header">Incendios <span class="badge">2</span></div>
-                        </li>
-                        <li>
-                          <div class="menu-header">Hogar <span class="badge">1</span></div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="menu-header">Seguros accidentes <span class="badge">1</span></div>
-                    </li>
-                    <li>
-                      <div class="menu-header">Bolso protegido <span class="badge">1</span></div>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="menu-header">Maquinarias <span class="badge">1</span></div>
-                </li>
-                <li>
-                  <div class="menu-header">Incendios <span class="badge">1</span></div>
-                </li>
-                <li>
-                  <div class="menu-header">Celulares <span class="badge">0</span></div>
-                </li>
-              </ul>
-            </li>
-
-            <!-- Second Main Navigation -->
-            <li class="menu-item">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Seguros personas</p> <span class="badge">1</span>
-                <span class="percentage personas" data-width="0">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-            </li>
-            <!-- third navigation menu  -->
-            <li class="menu-item">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Seguros hogar</p> <span class="badge">1</span>
-                <span class="percentage hogar"  data-width="0">
-                  
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- ATC navigation area block -->
-      <div class="area_wrap second">
-        <div>
-
-          <div class="area_inner">
-            <div class="area">
-              <div class="area_content">
-                <span class="section_icon">
-                  <img src="user.svg" alt="">
-                </span>
-                <h3> ATC <span class="counter">6</span></h3>
-              </div>
-              <div class="progress green"  data-width="50">
-                <p class="progress_text">0%</p>
+    <!-- model header wrap  -->
+    <div class="modelHeader">
+      <h4>Area</h4>
+      <h4>Estadística POR CONSULTAS </h4>
+    </div>
+    <!-- area navigation and progress main container -->
+    <div class="chatsByTopic" id="chatsByTagsModel">
+      <!-- All model items -->
+      <div class="modelItems">
+        <!-- single model item-->
+        <div class="modelItem first">
+          <div class="modelItemLeft">
+            <div class="itemsInner">
+              <div class="area">
+                <div class="area_content">
+                  <span class="section_icon">
+                    <img src="Pie chart.svg" alt="">
+                  </span>
+                  <h3 class="modelDataName"> VENTAS </h3>
+                  <span class="counter">6</span>
+                </div>
+                <div class="progress yellow">50%</div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="ventas_menu">
+          <div class="modelMenuWrap modelItemRight">
 
-          <ul class="menu">
 
-            <!-- First Main Navigation -->
-            <li class="menu-item has-submenu">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Siniestros</p> <span class="badge">4</span>
-                <span class="percentage Siniestros"  data-width="23">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-              <ul class="sub-menu">
-                <li class="menu-item has-submenu">
-                  <div class="menu-header">
-                    <p>Comercios</p> <span class="badge">2</span>
-                  </div>
-                  <ul class="sub-menu">
-                    <li>
-                      <div class="menu-header">Seguros de vida <span class="badge">2</span></div>
-                      <ul class="sub-menu">
-                        <li>
-                          <div class="menu-header">Incendios <span class="badge">2</span></div>
-                        </li>
-                        <li>
-                          <div class="menu-header">Hogar <span class="badge">1</span></div>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <div class="menu-header">Seguros accidentes <span class="badge">1</span></div>
-                    </li>
-                    <li>
-                      <div class="menu-header">Bolso protegido <span class="badge">1</span></div>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <div class="menu-header">Maquinarias <span class="badge">1</span></div>
-                </li>
-                <li>
-                  <div class="menu-header">Incendios <span class="badge">1</span></div>
-                </li>
-                <li>
-                  <div class="menu-header">Celulares <span class="badge">0</span></div>
-                </li>
-              </ul>
-            </li>
+            <ul class="modelMenuItems">
 
-            <!-- Second Main Navigation -->
-            <li class="menu-item">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Asistencias</p> <span class="badge">0</span>
-                <span class="percentage Asistencias"  data-width="4">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-            </li>
-            <!-- third navigation menu  -->
-            <li class="menu-item">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
-                <p class="nav_card_title">Renovación de Póliza</p> <span class="badge">0</span>
-                <span class="percentage Renovación"  data-width="0">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-            </li>
-            <!-- fourth navigation menu  -->
-            <li class="menu-item">
-              <div class="menu-header">
-                <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>  <p class="nav_card_title">Cobranzas</p> <span class="badge">0</span>
-                <span class="percentage Renovación"  data-width="0">
-                  <p class="progress_text">0%</p>
-                </span>
-              </div>
-            </li>
-          </ul>
+              <!-- First Main Navigation -->
+              <li class="modelMenuItem hasSubMenu">
+                <div class="menu-header">
+                  <span class="nav_card_icon"><img src="nav-card.svg" alt=""></span>
+                  <p class="nav_card_title">Seguros empresas</p> <span class="badge">4</span>
+                  <span class="percentage empresas" data-width="39">
+                    <p class="progress_text">0%</p>
+                  </span>
+                </div>
+                <!-- sub menu  -->
+                <ul class="subMenu">
+                  <li class="modelMenuItem hasSubMenu">
+                    <div class="menu-header">
+                      Comercios <span class="badge">2</span>
+                    </div>
+                    <ul class="subMenu">
+                      <li>
+                        <div class="menu-header">Seguros de vida <span class="badge">2</span></div>
+                        <ul class="subMenu">
+                          <li>
+                            <div class="menu-header">Incendios <span class="badge">2</span></div>
+                          </li>
+                          <li>
+                            <div class="menu-header">Hogar <span class="badge">1</span></div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <div class="menu-header">Seguros accidentes <span class="badge">1</span></div>
+                      </li>
+                      <li>
+                        <div class="menu-header">Bolso protegido <span class="badge">1</span></div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <div class="menu-header">Maquinarias <span class="badge">1</span></div>
+                  </li>
+                  <li>
+                    <div class="menu-header">Incendios <span class="badge">1</span></div>
+                  </li>
+                  <li>
+                    <div class="menu-header">Celulares <span class="badge">0</span></div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -220,38 +107,154 @@
 
   <!-- JavaScript -->
   <script>
+    // toggle navigation menu 
     document.addEventListener("DOMContentLoaded", function () {
       const headers = document.querySelectorAll(".menu-header");
 
       headers.forEach(header => {
         header.addEventListener("click", () => {
           const submenu = header.nextElementSibling;
-          if (submenu && submenu.classList.contains("sub-menu")) {
+          if (submenu && submenu.classList.contains("subMenu")) {
             submenu.classList.toggle("active");
           }
         });
       });
     });
-document.querySelector('.area_nav_progress_main').addEventListener('click', () => {
-  const progressBars = document.querySelectorAll('.percentage');
 
-  progressBars.forEach(bar => {
-    const targetWidth = parseInt(bar.getAttribute('data-width'), 10); // Final width percentage
-    const textElement = bar.querySelector('.progress_text'); // Text inside the bar
-    let currentWidth = 0; // Starting width
-    
-    // Animate the bar's width and the text simultaneously
-    const interval = setInterval(() => {
-      if (currentWidth >= targetWidth) {
-        clearInterval(interval); // Stop when target is reached
-      } else {
-        currentWidth++;
-        bar.style.width = `${currentWidth}%`; // Update the width
-        textElement.innerText = `${currentWidth}%`; // Update the percentage text
-      }
-    }, 2); // Adjust the speed of the animation by changing this value
-  });
-});
+// dynamic percentage with progress bar animation 
+    document.querySelector('.chatsByTopic').addEventListener('click', () => {
+      const progressBars = document.querySelectorAll('.percentage');
+
+      progressBars.forEach(bar => {
+        const targetWidth = parseInt(bar.getAttribute('data-width'), 10); // Final width percentage
+        const textElement = bar.querySelector('.progress_text'); // Text inside the bar
+        let currentWidth = 0; // Starting width
+
+        // Animate the bar's width and the text simultaneously
+        const interval = setInterval(() => {
+          if (currentWidth >= targetWidth) {
+            clearInterval(interval); // Stop when target is reached
+          } else {
+            currentWidth++;
+            bar.style.width = `${currentWidth}%`; // Update the width
+            textElement.innerText = `${currentWidth}%`; // Update the percentage text
+          }
+        }, 2); // Adjust the speed of the animation by changing this value
+      });
+    });
+
+
+
+// model items cloned
+function chatsByTags(data, totalChats) {
+    // Select the main container for model items
+    const mainContainer = document.querySelector("#chatsByTagsModel");
+    const itemsContainer = mainContainer.querySelector(".modelItems");
+    const itemTemplate = itemsContainer.querySelector(".modelItem");
+
+    // Remove any existing model items (optional cleanup)
+    itemsContainer.innerHTML = "";
+
+    function processItem(itemData, parentContainer) {
+        // Clone the template
+        const itemClone = itemTemplate.cloneNode(true);
+
+        // Fill in data
+        const nameElement = itemClone.querySelector(".modelDataName");
+        const counterElement = itemClone.querySelector(".counter");
+        const progressElement = itemClone.querySelector(".progress");
+
+        const name = itemData.d.name;
+        const value = itemData.d.value || 0; // Default to 0 if no value
+        const percentage = ((value * 100) / totalChats).toFixed(2);
+
+        if (nameElement) {
+            nameElement.textContent = name;
+        }
+        if (counterElement) {
+            counterElement.textContent = value;
+        }
+        if (progressElement) {
+            progressElement.textContent = `${percentage}%`;
+            progressElement.style.width = `${percentage}%`; // Adjust width dynamically
+        }
+
+        // Process children if any
+        if (itemData.children && itemData.children.length > 0) {
+            const submenu = document.createElement("ul");
+            submenu.classList.add("subMenu");
+
+            itemData.children.forEach(child => {
+                const childContainer = document.createElement("li");
+                childContainer.classList.add("modelMenuItem");
+
+                // Process child recursively
+                processItem(child, childContainer);
+                submenu.appendChild(childContainer);
+            });
+
+            // Append the submenu to the clone
+            const menuWrapper = itemClone.querySelector(".modelMenuItems");
+            if (menuWrapper) {
+                menuWrapper.appendChild(submenu);
+            }
+        }
+
+        // Append the clone to the parent container
+        parentContainer.appendChild(itemClone);
+    }
+
+    // Iterate through the top-level data
+    data.children.forEach(dataItem => {
+        processItem(dataItem, itemsContainer);
+    });
+}
+
+// Example data
+const exampleData = {
+    "d": {
+        "name": "Main Category - Sales"
+    },
+    "children": [
+        {
+            "d": {
+                "ID": "cangC",
+                "name": "Sales",
+                "value": 157
+            },
+            "children": [
+                {
+                    "d": {
+                        "ID": "cangCform",
+                        "name": "Form Contracts",
+                        "value": 195
+                    },
+                    "children": []
+                }
+            ]
+        },
+        {
+            "d": {
+                "ID": "cangT",
+                "name": "Work",
+                "value": 554
+            },
+            "children": [
+                {
+                    "d": {
+                        "ID": "cangTform",
+                        "name": "Form Work",
+                        "value": 521
+                    },
+                    "children": []
+                }
+            ]
+        }
+    ]
+};
+
+// Example usage
+chatsByTags(exampleData, 1000);
 
 
   </script>

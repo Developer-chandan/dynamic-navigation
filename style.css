@@ -24,7 +24,9 @@ body {
 .menu-container h4{
   color: var(--blue-medium);
 }
-
+li {
+  list-style: none; 
+}
 
 
 .menu-container {
@@ -158,6 +160,7 @@ body {
   /* margin-top: 1rem; */
   border-radius: 8px;
   /* border: 1px solid rgb(238, 238, 238); */
+  border-bottom: 1px solid rgb(238, 238, 238);
 }
 .modelItem.second {
   border-top: 1px solid rgb(238, 238, 238);
@@ -296,6 +299,10 @@ span.section_icon {
 
 .modelHeader h4 {
   border-top-left-radius: 0;
+}
+
+.modelItem:last-child {
+  border-bottom: none;
 }
 
 .modelMenuWrap {

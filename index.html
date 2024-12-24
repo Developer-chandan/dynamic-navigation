@@ -121,53 +121,95 @@
       });
     });
 
-// dynamic percentage with progress bar animation 
-    document.querySelector('.chatsByTopic').addEventListener('click', () => {
-      const progressBars = document.querySelectorAll('.percentage');
-
-      progressBars.forEach(bar => {
-        const targetWidth = parseInt(bar.getAttribute('data-width'), 10); // Final width percentage
-        const textElement = bar.querySelector('.progress_text'); // Text inside the bar
-        let currentWidth = 0; // Starting width
-
-        // Animate the bar's width and the text simultaneously
-        const interval = setInterval(() => {
-          if (currentWidth >= targetWidth) {
-            clearInterval(interval); // Stop when target is reached
-          } else {
-            currentWidth++;
-            bar.style.width = `${currentWidth}%`; // Update the width
-            textElement.innerText = `${currentWidth}%`; // Update the percentage text
-          }
-        }, 2); // Adjust the speed of the animation by changing this value
-      });
-    });
-
-
-
-// model items cloned
-function chatsByTags(data, totalChats) {
-    // Select the main container for model items
+// chats model items cloned and repeate 
+    function chatsByTags(data, totalChats) {
     const mainContainer = document.querySelector("#chatsByTagsModel");
     const itemsContainer = mainContainer.querySelector(".modelItems");
     const itemTemplate = itemsContainer.querySelector(".modelItem");
+    const menuItemTemplate = itemTemplate.querySelector(".modelMenuItem");
 
-    // Remove any existing model items (optional cleanup)
+    // Clear existing items
     itemsContainer.innerHTML = "";
 
+    // Helper function to calculate percentage
+    function calculatePercentage(value, total) {
+        return total > 0 ? ((value * 100) / total).toFixed(1) : 0;
+    }
+
+    // Recursive function to process menu items
+    function processMenuItem(menuData, parentMenuContainer, siblings) {
+        const menuItemClone = menuItemTemplate.cloneNode(true);
+
+        // Fill in menu data
+        const menuNameElement = menuItemClone.querySelector(".nav_card_title");
+        const badgeElement = menuItemClone.querySelector(".badge");
+        const progressTextElement = menuItemClone.querySelector(".progress_text");
+        const percentageElement = menuItemClone.querySelector(".percentage");
+
+        const name = menuData.d.name;
+        const value = menuData.d.value || 0;
+
+        // Initially set percentage to 0
+        if (menuNameElement) {
+            menuNameElement.textContent = name;
+        }
+        if (badgeElement) {
+            badgeElement.textContent = value;
+        }
+        if (progressTextElement) {
+            progressTextElement.textContent = "0%";
+        }
+        if (percentageElement) {
+            percentageElement.style.width = "0%"; // Initial state
+        }
+
+        // Process children recursively
+        if (menuData.children && menuData.children.length > 0) {
+            const submenu = document.createElement("ul");
+            submenu.classList.add("subMenu");
+
+            menuData.children.forEach(child => {
+                const childContainer = document.createElement("li");
+                childContainer.classList.add("modelMenuItem");
+
+                processMenuItem(child, childContainer, menuData.children);
+                submenu.appendChild(childContainer);
+            });
+
+            const menuHeader = menuItemClone.querySelector(".menu-header");
+            if (menuHeader) {
+                menuHeader.appendChild(submenu);
+            }
+        }
+
+        // Add percentage update function
+        menuItemClone.updatePercentage = () => {
+            const percentage = calculatePercentage(value, siblings.reduce((sum, sibling) => sum + (sibling.d.value || 0), 0));
+            menuData.d.percentage = percentage; // Update data object
+            if (progressTextElement) {
+                progressTextElement.textContent = `${percentage}%`;
+            }
+            if (percentageElement) {
+                percentageElement.style.width = `${percentage}%`;
+            }
+        };
+
+        parentMenuContainer.appendChild(menuItemClone);
+        return menuItemClone;
+    }
+
+    // Function to process main items
     function processItem(itemData, parentContainer) {
-        // Clone the template
         const itemClone = itemTemplate.cloneNode(true);
 
-        // Fill in data
         const nameElement = itemClone.querySelector(".modelDataName");
         const counterElement = itemClone.querySelector(".counter");
         const progressElement = itemClone.querySelector(".progress");
 
         const name = itemData.d.name;
-        const value = itemData.d.value || 0; // Default to 0 if no value
-        const percentage = ((value * 100) / totalChats).toFixed(2);
+        const value = itemData.d.value || 0;
 
+        // Set initial percentage to 0
         if (nameElement) {
             nameElement.textContent = name;
         }
@@ -175,76 +217,106 @@ function chatsByTags(data, totalChats) {
             counterElement.textContent = value;
         }
         if (progressElement) {
-            progressElement.textContent = `${percentage}%`;
-            progressElement.style.width = `${percentage}%`; // Adjust width dynamically
+            progressElement.textContent = "0%";
+            progressElement.style.width = "0%"; // Initial state
         }
 
-        // Process children if any
-        if (itemData.children && itemData.children.length > 0) {
-            const submenu = document.createElement("ul");
-            submenu.classList.add("subMenu");
-
-            itemData.children.forEach(child => {
-                const childContainer = document.createElement("li");
-                childContainer.classList.add("modelMenuItem");
-
-                // Process child recursively
-                processItem(child, childContainer);
-                submenu.appendChild(childContainer);
+        // Process menu items
+        const menuItemsContainer = itemClone.querySelector(".modelMenuItems");
+        const menuItems = [];
+        if (itemData.children && itemData.children.length > 0 && menuItemsContainer) {
+            itemData.children.forEach(menuData => {
+                const menuItem = processMenuItem(menuData, menuItemsContainer, itemData.children);
+                menuItems.push(menuItem);
             });
-
-            // Append the submenu to the clone
-            const menuWrapper = itemClone.querySelector(".modelMenuItems");
-            if (menuWrapper) {
-                menuWrapper.appendChild(submenu);
-            }
         }
 
-        // Append the clone to the parent container
+        // Add percentage update function
+        itemClone.updatePercentage = () => {
+            const percentage = calculatePercentage(value, totalChats);
+            if (progressElement) {
+                progressElement.textContent = `${percentage}%`;
+                progressElement.style.width = `${percentage}%`;
+            }
+            menuItems.forEach(menuItem => menuItem.updatePercentage());
+        };
+
         parentContainer.appendChild(itemClone);
+        return itemClone;
     }
 
-    // Iterate through the top-level data
-    data.children.forEach(dataItem => {
-        processItem(dataItem, itemsContainer);
+    // Process all top-level items
+    const items = [];
+    data.children.forEach(item => {
+        const processedItem = processItem(item, itemsContainer);
+        items.push(processedItem);
+    });
+
+    // Add click event listener to document for global update
+    document.addEventListener("click", () => {
+        items.forEach(item => item.updatePercentage());
     });
 }
 
-// Example data
+// Example usage
 const exampleData = {
     "d": {
-        "name": "Main Category - Sales"
+        "name": "Main Container"
     },
     "children": [
         {
             "d": {
-                "ID": "cangC",
                 "name": "Sales",
                 "value": 157
             },
             "children": [
                 {
                     "d": {
-                        "ID": "cangCform",
-                        "name": "Form Contracts",
-                        "value": 195
+                        "ID": "cangC",
+                        "name": "Contracts",
+                        "value": 157
                     },
-                    "children": []
+                    "children": [
+                        {
+                            "d": {
+                                "ID": "cangCform",
+                                "name": "Form Contracts",
+                                "value": 195
+                            },
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "d": {
+                        "ID": "cangT",
+                        "name": "Work",
+                        "value": 554
+                    },
+                    "children": [
+                        {
+                            "d": {
+                                "ID": "cangTform",
+                                "name": "Form Work",
+                                "value": 521
+                            },
+                            "children": []
+                        }
+                    ]
                 }
             ]
         },
         {
             "d": {
-                "ID": "cangT",
-                "name": "Work",
-                "value": 554
+                "name": "Support",
+                "value": 234
             },
             "children": [
                 {
                     "d": {
-                        "ID": "cangTform",
-                        "name": "Form Work",
-                        "value": 521
+                        "ID": "supportContracts",
+                        "name": "Contracts Support",
+                        "value": 200
                     },
                     "children": []
                 }
@@ -253,8 +325,11 @@ const exampleData = {
     ]
 };
 
-// Example usage
+// Initialize the function with example data and total chats
 chatsByTags(exampleData, 1000);
+
+
+
 
 
   </script>

@@ -32,13 +32,11 @@
 
 .chatsByTopicWrap .menu-container {
   width: 100%;
-  /* min-width: 668px; */
-  /* margin: auto; */
   background: rgb(255, 255, 255);
-  /* border: 1px solid rgb(221, 221, 221); */
+
   border-radius: 10px;
   padding: 20px;
-  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px; */
+
   padding-left: 40px;
   padding-right: 40px;
   overflow: auto;
@@ -74,7 +72,7 @@
   display: none;
   margin-left: 20px;
   list-style: none;
-  /* border-left: 2px solid rgba(199, 198, 218, 1); */
+  
   padding-left: 15px;
 }
 
@@ -109,39 +107,39 @@
 .chatsByTopic .percentage.empresas {
   color: rgb(106, 90, 205);
   background-color: rgb(223, 155, 254);
-  /* width: 0%; */
+ 
 }
 
 .chatsByTopic .percentage.personas {
   color: var(--blue-medium);
   background-color: var(--yellow);
-  /* width: 2%; */
+
 }
 .chatsByTopic .percentage.hogar {
   color: rgba(73, 84, 96, 1);
   background-color:rgba(177, 254, 218, 1);
-  /* width: 2%; */
+
 }
 .chatsByTopic .percentage.Renovación {
   color: rgba(73, 84, 96, 1);
   background-color:rgba(177, 254, 218, 1);
-  /* width: 2%; */
+
 }
 .chatsByTopic .percentage.Siniestros {
   background: rgba(255, 149, 202, 1);
   color: var(--blue-medium);
-  /* width: 23%; */
+
 }
 .chatsByTopic .percentage.Asistencias {
   background: rgba(253, 201, 145, 1);
   color: var(--blue-medium);
-  /* width: 4%; */
+  
 }
 
 .chatsByTopic .percentage.Renovación {
   background: rgba(151, 228, 255, 1);
   color: var(--blue-medium);
-  /* width: 2%; */
+
 }
 .chatsByTopic {
   border: 1px solid rgb(238, 238, 238);
@@ -153,10 +151,7 @@
 }
 .chatsByTopic .modelItem {
   display: grid;
-  /* grid-template-columns: repeat(1, 178px 661px); */
-  /* grid-template-columns: repeat(1, 2fr  7.6fr); */
   border-radius: 8px;
- 
   border-bottom: 1px solid rgb(238, 238, 238);
   grid-template-columns: 190px 1fr;
   width: 100%;
@@ -189,8 +184,6 @@
 
 .chatsByTopicWrap .modelHeader{
   display: grid;
-  /* grid-template-columns: repeat(1, 178px 691px); */
-  /* grid-template-columns:repeat(1, 2fr  7.6fr); */
   border: 1px solid rgb(238, 238, 238);
   border-bottom: none;
   border-top-right-radius: 7px;
@@ -361,7 +354,7 @@
 }
 
 
-.title_and_balls {
+.chatsByTopicWrap .title_and_balls {
   min-width: 151px;
   display: flex;
   gap: 13px;
@@ -370,22 +363,13 @@
 }
 
 
-.modelHeader h4:first-child {
+.chatsByTopicWrap .modelHeader h4:first-child {
   min-width: 182px;
 }
 
-/* test css start */
-.chatsByTopicWrap{
-  display: flex;
-  justify-content: flex-start;
-  gap: 5px;
-}
-.sidenavigation{min-width: 264px;/* height: 100vh; */}
 
-.sidenavigation img {
-  width: 100%;
-}
-.parcentage_bar_wrap {
+
+.chatsByTopicWrap .parcentage_bar_wrap {
   position: relative;
   width: 100%; /* Ensures it spans the container */
   height: 37px; /* Adjust height as needed */
@@ -394,21 +378,10 @@
   overflow: hidden;
 }
 
-.parcentage_bar_wrap .percentage {
+.chatsByTopicWrap .parcentage_bar_wrap .percentage {
   position: absolute;
   height: 100%;
   background-color: #a29bfe; /* Progress bar color */
   border-radius: 5px;
   transition: width 0.3s ease-in-out; /* Smooth width transition */
 }
-
-
-/* test css end */
-
-
-/* @media(max-width: 1000px){
- 
-  .chatsByTopicWrap .modelHeader{
-    grid-template-columns: repeat(1, 2.5fr 7.6fr);  }
-
-} */
